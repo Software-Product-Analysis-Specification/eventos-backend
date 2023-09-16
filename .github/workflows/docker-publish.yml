@@ -125,5 +125,5 @@ jobs:
           imagepullsecrets: |
             ghcr-registry-secret
           manifests: |
-            ./infrastructure/kubernetes/eventos-backend-deployment.yml
+            ./.infrastructure/kubernetes/eventos-backend-deployment.yml
           images: ghcr.io/${{ github.repository }}/demo-app:${{ github.sha }}
