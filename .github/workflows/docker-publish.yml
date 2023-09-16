@@ -1,4 +1,4 @@
-name: Docker
+nmname: Docker
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
@@ -117,13 +117,9 @@ jobs:
           method: kubeconfig
           kubeconfig: ${{ secrets.KUBE_CONFIG }}
 
-      - name: Deploy
-        uses: Azure/k8s-deploy@v4.4
-        with:
-          action: deploy
-          strategy: basic
-          imagepullsecrets: |
-            ghcr-registry-secret
-          manifests: |
-            ./.infrastructure/kubernetes/eventos-backend-deployment.yml
-          images: ghcr.io/${{ github.repository }}/demo-app:${{ github.sha }}
+      - uses: azure/setup-kubectl@v3
+        name: Setup kubectl
+      
+      - name: Run kubectl
+        run: |
+          kubectl -n eventos set image deployment/eventos-backend eventos-backend-container=ghcr.io/${{ github.repository }}/demo-app:${{ github.sha }}
