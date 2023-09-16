@@ -31,7 +31,7 @@ namespace eventos_backend.Controllers
             var evento = _db.Eventos.FirstOrDefault(e => e.Id == id);
 
             if(evento != null)
-                return Ok(id);
+                return Ok(evento);
             return NotFound();
         }
 
