@@ -122,4 +122,4 @@ jobs:
       
       - name: Run kubectl
         run: |
-          kubectl -n eventos set image deployment/eventos-backend eventos-backend-container=ghcr.io/${{ github.repository }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+          kubectl -n eventos set image deployment/eventos-backend eventos-backend-container=ghcr.io/${{ github.repository }}/eventos-backend:${{ github.sha }}
