@@ -60,7 +60,8 @@ namespace eventos_backend.Controllers
 
                 if(oldEvento != null)
                 {
-                    oldEvento = evento;
+                    oldEvento.Nome = evento.Nome;
+                    oldEvento.Descricao = evento.Descricao;
                     await _db.SaveChangesAsync();
                 }
                 else
