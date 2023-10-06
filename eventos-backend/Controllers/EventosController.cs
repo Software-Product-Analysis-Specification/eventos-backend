@@ -77,11 +77,16 @@ namespace eventos_backend.Controllers
             }
         }
 
-        [HttpDelete]
-        public async Task<IActionResult> Delete(EventoModel evento)
+        [HttpDelete("{id}", Name = "DeleteEvento")]
+        public async Task<IActionResult> Delete(int id)
         {
-            _db.Eventos.Remove(evento);
-            await _db.SaveChangesAsync();
+            var evento = _db.Eventos.FirstOrDefault(e => e.Id == id);
+
+            if (evento != null)
+            {
+                _db.Eventos.Remove(evento);
+                await _db.SaveChangesAsync();
+            }
 
             return Ok();
         }
