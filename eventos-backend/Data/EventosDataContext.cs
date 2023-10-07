@@ -11,5 +11,6 @@ namespace eventos_backend.Data
         }
 
         public DbSet<EventoModel> Eventos { get; set; }
+        public DbSet<ParticipanteModel> Participantes { get; set; }
     }
 }
