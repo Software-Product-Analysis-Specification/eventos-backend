@@ -41,6 +41,7 @@ namespace eventos_backend.Controllers
             try
             {
                 _db.Eventos.Add(evento);
+
                 await _db.SaveChangesAsync();
 
                 return Ok();
@@ -62,6 +63,8 @@ namespace eventos_backend.Controllers
                 {
                     oldEvento.Nome = evento.Nome;
                     oldEvento.Descricao = evento.Descricao;
+                    oldEvento.Data = evento.Data;
+
                     await _db.SaveChangesAsync();
                 }
                 else
