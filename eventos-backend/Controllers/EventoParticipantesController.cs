@@ -42,5 +42,19 @@ namespace eventos_backend.Controllers
                 return BadRequest(ex.Message);
             }
         }
+
+        [HttpDelete("{evento}/{participante}", Name = "DeleteEventoParticipante")]
+        public async Task<IActionResult> Delete(int evento, int participante)
+        {
+            var eventoParticipante = _db.EventoParticipantes.FirstOrDefault(e => e.Evento == evento && e.Participante == participante);
+
+            if (eventoParticipante != null)
+            {
+                _db.Eventos.Remove(eventoParticipante);
+                await _db.SaveChangesAsync();
+            }
+
+            return Ok();
+        }
     }
 }
