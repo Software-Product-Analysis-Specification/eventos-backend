@@ -75,7 +75,7 @@ namespace eventos_backend.Controllers
                     var restClient = new RestClient("https://graph.facebook.com/v17.0/132331503289028");
                     var restRequest = new RestRequest("/messages", Method.Post);
 
-                    restRequest.AddHeader("Authorization", "Bearer EAACUoe7I76EBOZBPp1Wo5C3JojTUokWsZBvHealoUodEIYeVH71SKPbp2hpoXINY4pc6TpaAmYNKSYL2WAyRJ1fYVsTVXvtGQRd3TNDz7eSIQQxW2NLdlisecFcAXjpCHFMTZBUT83RrS1L4IudfcsvvgINe9YFPMq2R5tAX2ltZCkjwFOVEV7QarYGc56RN5g5j9mHOZBDXgEDsi");
+                    restRequest.AddHeader("Authorization", $"Bearer {Environment.GetEnvironmentVariable("METATOKEN")}");
 
                     var message = new JObject
                     {
