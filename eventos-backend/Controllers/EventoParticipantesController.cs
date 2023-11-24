@@ -50,7 +50,7 @@ namespace eventos_backend.Controllers
 
             if (eventoParticipante != null)
             {
-                _db.Eventos.Remove(eventoParticipante);
+                _db.EventoParticipantes.Remove(eventoParticipante);
                 await _db.SaveChangesAsync();
             }
 
