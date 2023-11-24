@@ -96,7 +96,7 @@ namespace eventos_backend.Controllers
 
                     var response = restClient.Execute(restRequest);
 
-                    Console.WriteLine(response.StatusCode);
+                    Console.WriteLine("STATUSX " + response.StatusCode);
                     Console.WriteLine(response.Content);
                 }
             }
