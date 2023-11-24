@@ -73,9 +73,9 @@ namespace eventos_backend.Controllers
                 if(eventoDb != null && participanteDb != null)
                 {
                     var restClient = new RestClient("https://graph.facebook.com/v17.0/132331503289028");
-                    var restRequest = new RestRequest("/132331503289028/messages", Method.Post);
+                    var restRequest = new RestRequest("/messages", Method.Post);
 
-                    restRequest.AddHeader("Authorization", "Bearer EAACUoe7I76EBOyKy5mzyxZAHDvIw2cYPHu2dyEQZBTrt5HPU3CJMU2N9YJ2XZBqzXcL1uwuk2RHgU0Eh6OXX6EADkVsp22dNJAXXZAzGcWZARFLpn6JUZCOYjmab3lbHWipuGSYO1kR89AsdSklpZBbtZCr9cl4I0IqdAfuG9NtohxsqU6JUiYJ9iMhg6FRunvLTFbmKhOJw9iZC2CpXsoN7qYzkuJOmdh4bZAmi0ZD");
+                    restRequest.AddHeader("Authorization", "Bearer EAACUoe7I76EBOZBPp1Wo5C3JojTUokWsZBvHealoUodEIYeVH71SKPbp2hpoXINY4pc6TpaAmYNKSYL2WAyRJ1fYVsTVXvtGQRd3TNDz7eSIQQxW2NLdlisecFcAXjpCHFMTZBUT83RrS1L4IudfcsvvgINe9YFPMq2R5tAX2ltZCkjwFOVEV7QarYGc56RN5g5j9mHOZBDXgEDsi");
 
                     var message = new JObject
                     {
@@ -84,10 +84,55 @@ namespace eventos_backend.Controllers
                         ["type"] = "template",
                         ["template"] = new JObject
                         {
-                            ["name"] = "hello_world",
+                            ["name"] = "cracha_evento",
                             ["language"] = new JObject
                             {
                                 ["code"] = "pt_BR"
+                            },
+                            ["components"] = new JArray
+                            {
+                                new JObject
+                                {
+                                    ["type"] = "header",
+                                    ["parameters"] = new JArray
+                                    {
+                                        new JObject
+                                        {
+                                            ["type"] = "image",
+                                            ["image"] = new JObject
+                                            {
+                                                ["link"] = "https://i.ibb.co/3dSvYhz/qrcode.png"
+                                            }
+                                        }
+                                    }
+                                },
+                                new JObject
+                                {
+                                    ["type"] = "body",
+                                    ["parameters"] = new JArray
+                                    {
+                                        new JObject
+                                        {
+                                            ["type"] = "text",
+                                            ["text"] = eventoDb.Nome
+                                        },
+                                        new JObject
+                                        {
+                                            ["type"] = "text",
+                                            ["text"] = participanteDb.Nome
+                                        },
+                                        new JObject
+                                        {
+                                            ["type"] = "text",
+                                            ["text"] = eventoDb.Data?.ToString("dd/MM/yyyy HH:mm")
+                                        },
+                                        new JObject
+                                        {
+                                            ["type"] = "text",
+                                            ["text"] = participanteDb.Email
+                                        }
+                                    }
+                                }
                             }
                         }
                     };
