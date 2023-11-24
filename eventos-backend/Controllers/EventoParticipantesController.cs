@@ -94,7 +94,10 @@ namespace eventos_backend.Controllers
 
                     restRequest.AddJsonBody(message.ToString());
 
-                    restClient.Execute(restRequest);
+                    var response = restClient.Execute(restRequest);
+
+                    Console.WriteLine(response.StatusCode);
+                    Console.WriteLine(response.Content);
                 }
             }
 
