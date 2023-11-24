@@ -91,6 +91,10 @@ namespace eventos_backend.Controllers
                             }
                         }
                     };
+
+                    restRequest.AddJsonBody(message.ToString());
+
+                    restClient.Execute(restRequest);
                 }
             }
 
